@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -107,6 +108,7 @@ const Login = () => {
       description: "Has iniciado sesión exitosamente",
     });
     
+    // Siempre ir a la página principal al iniciar sesión
     navigate("/");
     setIsLoading(false);
   };
@@ -183,15 +185,12 @@ const Login = () => {
     localStorage.setItem("user", JSON.stringify(user));
     localStorage.setItem("sessionExpiry", (Date.now() + 24 * 60 * 60 * 1000).toString());
     
-    // Marcar como nuevo usuario para mostrar onboarding
-    sessionStorage.setItem("isNewUser", "true");
-    
     toast({
       title: "¡Registro exitoso!",
       description: "Tu cuenta ha sido creada. Personaliza tu experiencia.",
     });
     
-    // Navegar directamente al onboarding después del registro
+    // Solo al registrarse (crear cuenta) se va al onboarding
     navigate("/onboarding");
     
     setIsLoading(false);
