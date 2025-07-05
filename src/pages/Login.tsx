@@ -7,7 +7,6 @@ import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { ShoppingCart, Eye, EyeOff, ArrowLeft } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
-import OnboardingFlow from "@/components/OnboardingFlow";
 import { 
   sanitizeInput, 
   validateEmail, 
@@ -223,6 +222,7 @@ const Login = () => {
                      provider === 'microsoft' ? 'Microsoft' : 'Apple'}`,
       });
       
+      // Los usuarios de redes sociales van directamente a la página principal
       navigate("/");
     } catch (error) {
       toast({
