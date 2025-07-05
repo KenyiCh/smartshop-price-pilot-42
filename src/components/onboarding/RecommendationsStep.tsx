@@ -110,49 +110,49 @@ const RecommendationsStep = ({ data, onUpdate }: RecommendationsStepProps) => {
         </p>
       </div>
       
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {products.map((product) => (
           <Card key={product.id} className="overflow-hidden">
-            <CardContent className="p-4">
-              <div className="flex space-x-3">
+            <CardContent className="p-5">
+              <div className="flex space-x-4">
                 <img
                   src={product.image}
                   alt={product.name}
-                  className="w-20 h-20 object-cover rounded-md"
+                  className="w-24 h-24 object-cover rounded-md flex-shrink-0"
                 />
-                <div className="flex-1 space-y-2">
+                <div className="flex-1 space-y-3 min-w-0">
                   <div>
-                    <h4 className="font-medium text-sm line-clamp-2">{product.name}</h4>
-                    <div className="flex items-center space-x-1 mt-1">
-                      <Star className="h-3 w-3 fill-yellow-400 text-yellow-400" />
-                      <span className="text-xs text-muted-foreground">{product.rating}</span>
+                    <h4 className="font-medium text-base line-clamp-2 mb-2">{product.name}</h4>
+                    <div className="flex items-center space-x-1">
+                      <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
+                      <span className="text-sm text-muted-foreground">{product.rating}</span>
                     </div>
                   </div>
                   
-                  <div className="space-y-1">
-                    <p className="font-semibold text-primary">S/ {formatPrice(product.price)}</p>
+                  <div className="space-y-2">
+                    <p className="font-semibold text-lg text-primary">S/ {formatPrice(product.price)}</p>
                     <Badge variant="secondary" className="text-xs">
                       {product.reason}
                     </Badge>
                   </div>
                   
-                  <div className="flex space-x-1">
+                  <div className="flex flex-col space-y-2 pt-2">
                     <Button
                       size="sm"
                       variant={interests[product.id] === 'interested' ? 'default' : 'outline'}
                       onClick={() => handleInterest(product.id, 'interested')}
-                      className="flex-1 h-8"
+                      className="w-full h-9 text-sm"
                     >
-                      <ThumbsUp className="h-3 w-3 mr-1" />
+                      <ThumbsUp className="h-4 w-4 mr-2" />
                       Me interesa
                     </Button>
                     <Button
                       size="sm"
                       variant={interests[product.id] === 'not_interested' ? 'destructive' : 'outline'}
                       onClick={() => handleInterest(product.id, 'not_interested')}
-                      className="flex-1 h-8"
+                      className="w-full h-9 text-sm"
                     >
-                      <ThumbsDown className="h-3 w-3 mr-1" />
+                      <ThumbsDown className="h-4 w-4 mr-2" />
                       No me interesa
                     </Button>
                   </div>
