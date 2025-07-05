@@ -187,27 +187,15 @@ const Login = () => {
     // Marcar como nuevo usuario para mostrar onboarding
     sessionStorage.setItem("isNewUser", "true");
     
-    // Mostrar formulario de onboarding después del registro
-    setIsRegistering(false);
-    setShowOnboarding(true);
-    
     toast({
       title: "¡Registro exitoso!",
       description: "Tu cuenta ha sido creada. Personaliza tu experiencia.",
     });
     
+    // Navegar directamente al onboarding después del registro
+    navigate("/onboarding");
+    
     setIsLoading(false);
-  };
-
-  const [showOnboarding, setShowOnboarding] = useState(false);
-
-  const handleOnboardingComplete = () => {
-    localStorage.setItem("onboardingCompleted", "true");
-    toast({
-      title: "¡Perfecto!",
-      description: "Tu experiencia ha sido personalizada exitosamente",
-    });
-    navigate("/");
   };
 
   const handleSocialLogin = async (provider: 'google' | 'microsoft' | 'apple') => {
@@ -254,11 +242,6 @@ const Login = () => {
   const generateUserId = () => {
     return 'user_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
   };
-
-  // Mostrar formulario de onboarding después del registro
-  if (showOnboarding) {
-    return <OnboardingFlow onComplete={handleOnboardingComplete} />;
-  }
 
   return (
     <div className="min-h-screen bg-background flex flex-col items-center justify-center p-4 relative">
